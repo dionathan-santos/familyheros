@@ -10,7 +10,7 @@ def install_dependencies():
     
     # Install the rest of the dependencies
     dependencies = [
-        "streamlit==1.32.0",
+        "streamlit==1.32.0", 
         "scikit-learn==1.4.0",
         "pydeck==0.8.1b0",
         "matplotlib==3.8.2",
