@@ -1,7 +1,5 @@
 """
 Comprehensive Dependency Installation Script for Islamic Food Drive Project
-
-This script helps you install and manage project dependencies with multiple options.
 """
 
 import subprocess
@@ -25,13 +23,15 @@ def check_python_version():
     print(f"Platform: {platform.platform()}")
 
 def install_dependencies():
-    """Install project dependencies"""
+    """Install project dependencies with robust error handling"""
+    # Upgrade pip and setuptools first
+    run_command([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"])
+    
     # Uninstall existing packages to prevent conflicts
     packages_to_uninstall = [
         "numpy", "pandas", "streamlit", "scikit-learn", 
         "matplotlib", "seaborn", "openpyxl", 
-        "huggingface_hub", "sentence-transformers", 
-        "transformers"
+        "sentence-transformers", "transformers"
     ]
     
     for package in packages_to_uninstall:
@@ -40,26 +40,25 @@ def install_dependencies():
         except:
             pass
     
-    # Clean pip cache
-    run_command([sys.executable, "-m", "pip", "cache", "purge"])
-    
-    # Install dependencies in specific order
+    # Install dependencies with individual package handling
     dependencies = [
-        "numpy==1.24.3",
-        "pandas==2.0.3",
+        "numpy==1.23.5",
+        "pandas==2.0.1",
         "streamlit==1.32.0",
-        "scikit-learn==1.4.0",
-        "matplotlib==3.8.2",
-        "seaborn==0.13.1",
+        "scikit-learn==1.2.2",
+        "matplotlib==3.7.1",
+        "seaborn==0.12.2",
         "openpyxl==3.1.2",
-        "huggingface_hub>=0.20.0",
         "sentence-transformers==2.2.2",
-        "transformers==4.38.1",
-        "torch==2.2.0"
+        "transformers==4.30.2",
+        "torch==2.0.1"
     ]
     
     for dependency in dependencies:
-        run_command([sys.executable, "-m", "pip", "install", dependency])
+        try:
+            run_command([sys.executable, "-m", "pip", "install", dependency])
+        except Exception as e:
+            print(f"Failed to install {dependency}: {e}")
 
 def verify_installation():
     """Verify the installed packages"""
@@ -67,15 +66,13 @@ def verify_installation():
         import numpy
         import pandas
         import streamlit
-        import huggingface_hub
-        import sentence_transformers
+        import sklearn
         
         print("\n✅ Verification Successful!")
         print(f"NumPy Version: {numpy.__version__}")
         print(f"Pandas Version: {pandas.__version__}")
         print(f"Streamlit Version: {streamlit.__version__}")
-        print(f"Hugging Face Hub Version: {huggingface_hub.__version__}")
-        print(f"Sentence Transformers Version: {sentence_transformers.__version__}")
+        print(f"Scikit-learn Version: {sklearn.__version__}")
     except ImportError as e:
         print(f"❌ Verification Failed: {e}")
 
