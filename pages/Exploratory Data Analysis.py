@@ -45,7 +45,7 @@ def plot_boxplot(column):
 def plot_categorical(column):
     """Plots a bar chart for categorical columns."""
     fig, ax = plt.subplots(figsize=(8, 5))
-    sns.countplot(y=merged_df[column], order=merged_df[column].value_counts().index, palette="viridis", ax=ax)
+    sns.countplot(y=merged_df[column], order=merged_df[column].value_counts().index, palette="viridis", ax=ax, hue=merged_df[column], legend=False)
     ax.set_title(f"Distribution of {column}")
     ax.set_xlabel("Count")
     ax.set_ylabel(column)

@@ -1,8 +1,21 @@
 import streamlit as st
 import pandas as pd
-from sentence_transformers import SentenceTransformer, util
-from transformers import pipeline
 import torch
+import importlib
+
+# Check and import libraries
+def import_with_error_handling(module_name):
+    try:
+        return importlib.import_module(module_name)
+    except ImportError as e:
+        st.error(f"Error importing {module_name}: {e}")
+        st.error("Please ensure all required libraries are installed.")
+        st.stop()
+
+# Import libraries with error handling
+SentenceTransformer = import_with_error_handling('sentence_transformers').SentenceTransformer
+util = import_with_error_handling('sentence_transformers').util
+pipeline = import_with_error_handling('transformers').pipeline
 
 # --- Page Config ---
 st.set_page_config(page_title="Ask the Assistant", page_icon="💬", layout="wide")

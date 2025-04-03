@@ -29,7 +29,9 @@ def install_dependencies():
     # Uninstall existing packages to prevent conflicts
     packages_to_uninstall = [
         "numpy", "pandas", "streamlit", "scikit-learn", 
-        "matplotlib", "seaborn", "openpyxl"
+        "matplotlib", "seaborn", "openpyxl", 
+        "huggingface_hub", "sentence-transformers", 
+        "transformers"
     ]
     
     for package in packages_to_uninstall:
@@ -50,6 +52,7 @@ def install_dependencies():
         "matplotlib==3.8.2",
         "seaborn==0.13.1",
         "openpyxl==3.1.2",
+        "huggingface_hub>=0.20.0",
         "sentence-transformers==2.2.2",
         "transformers==4.38.1",
         "torch==2.2.0"
@@ -64,11 +67,15 @@ def verify_installation():
         import numpy
         import pandas
         import streamlit
+        import huggingface_hub
+        import sentence_transformers
         
         print("\n✅ Verification Successful!")
         print(f"NumPy Version: {numpy.__version__}")
         print(f"Pandas Version: {pandas.__version__}")
         print(f"Streamlit Version: {streamlit.__version__}")
+        print(f"Hugging Face Hub Version: {huggingface_hub.__version__}")
+        print(f"Sentence Transformers Version: {sentence_transformers.__version__}")
     except ImportError as e:
         print(f"❌ Verification Failed: {e}")
 
