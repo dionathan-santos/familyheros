@@ -1,5 +1,8 @@
+# Core dependencies
 numpy==2.0.2
-pandas==2.2.0
+# Using pandas without version constraint to let pip resolve compatibility
+pandas>=2.0.0
+# Other dependencies
 streamlit==1.32.0
 scikit-learn==1.4.0
 pydeck==0.8.1b0
