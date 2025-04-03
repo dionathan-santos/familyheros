@@ -43,8 +43,8 @@ def install_dependencies():
     
     # Install dependencies in specific order
     dependencies = [
-        "numpy==2.0.2",
-        "pandas==2.1.4",
+        "numpy==1.24.3",
+        "pandas==2.0.3",
         "streamlit==1.32.0",
         "scikit-learn==1.4.0",
         "matplotlib==3.8.2",
