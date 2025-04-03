@@ -1,7 +1,6 @@
 # Core dependencies
-numpy==2.0.2
-# Using pandas without version constraint to let pip resolve compatibility
-pandas>=2.0.0
+numpy==1.26.4
+pandas==2.1.4
 # Other dependencies
 streamlit==1.32.0
 scikit-learn==1.4.0
